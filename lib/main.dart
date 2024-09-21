@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/bloc/display_data_bloc.dart';
+import 'package:frontend/bloc/person_bloc.dart';
 import 'package:frontend/create.dart';
 import 'package:frontend/display_data.dart';
 
@@ -11,8 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Homepage(),
+    return BlocProvider(
+      create: (context) => DisplayDataBloc()..add(FetchData()),
+      child: const MaterialApp(
+        home: Homepage(),
+      ),
     );
   }
 }
